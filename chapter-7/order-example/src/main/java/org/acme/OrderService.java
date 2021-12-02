@@ -47,4 +47,8 @@ public class OrderService {
         return Order.stream("userId", profile.id);
     }
 
+    public Multi<Order> getSmallOrders() {
+        return getAllOrders().select().where(o -> o.products.size() < 4);
+    }
+
 }
